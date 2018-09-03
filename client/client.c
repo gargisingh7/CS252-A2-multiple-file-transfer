@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <arpa/inet.h>
-
+#include<stdlib.h>
 int main(int argc, char *argv[]){
   int clientSocket,b;
   char buffer[1024],buff[1025];
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]){
   /* Set port number, using htons function to use proper byte order */
   serverAddr.sin_port = htons(5432);
   /* Set IP address to localhost */
-  serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  serverAddr.sin_addr.s_addr = inet_addr("172.17.0.2");   //IP address of docker image
   /* Set all bits of the padding field to 0 */
   memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
 
@@ -146,8 +146,7 @@ int main(int argc, char *argv[]){
 bzero(buffer,1024);
 sprintf(buffer,"./read.sh > file.htm");
 system(buffer);
-sprintf("firefox file.htm");
+sprintf(buffer,"firefox file.htm");
 system(buffer);
-
   return 0;
 }
