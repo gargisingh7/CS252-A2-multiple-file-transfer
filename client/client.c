@@ -146,6 +146,8 @@ int main(int argc, char *argv[]){
 bzero(buffer,1024);
 sprintf(buffer,"./read.sh > file.htm");
 system(buffer);
+sprintf("firefox file.htm");
+system(buffer);
 
   return 0;
 }
