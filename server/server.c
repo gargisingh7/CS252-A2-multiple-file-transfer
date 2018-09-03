@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include<limits.h>
-
+#include<stdlib.h>
 int main(){
   int welcomeSocket, newSocket;
   char buffer[1024];
@@ -32,7 +32,7 @@ int main(){
   /* Set port number, using htons function to use proper byte order */
   serverAddr.sin_port = htons(5432);
   /* Set IP address to localhost */
-  serverAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  serverAddr.sin_addr.s_addr = inet_addr("0.0.0.0");
   /* Set all bits of the padding field to 0 */
   memset(serverAddr.sin_zero, '\0', sizeof serverAddr.sin_zero);
   memset(buffer, '0', sizeof(buffer));
